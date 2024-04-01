@@ -20,7 +20,7 @@ while True:
     print(f'Você tem mais {ChancesParaAcertar} chances')
 
     if ChuteDeLetra.lower() not in PalavraParaAdivinhar.lower():
-        ChancesParaAcertar -= 1 
+        ChancesParaAcertar =- 1 
 
     if set(PalavraParaAdivinhar.lower()) == set(LetrasLista):  #perguntar para o prof
         Ganhou = True
