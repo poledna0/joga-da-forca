@@ -1,35 +1,51 @@
 PalavraParaAdivinhar = input('Digite a palavra para ser adivinhada: ')
 ChancesParaAcertar = int(input('Digite a quantidade de vezes que pode errar: '))
 
-# para limpar o teminal
-print('\033c', end='') 
+# para limpar o terminal
+print('\033c', end='')
 
 LetrasLista = []
 Ganhou = False
 
 while True:
-    for Letras in PalavraParaAdivinhar:
-        if Letras in LetrasLista:
-            print(Letras.lower(), end=' ')
+    for Letra in PalavraParaAdivinhar:
+        LetraEncontrada = False
+        for LetraEscolhida in LetrasLista:
+            if LetraEscolhida.lower() == Letra.lower():
+                LetraEncontrada = True
+                break
+
+        if LetraEncontrada:
+            print(Letra, end=' ')
         else:
             print('_', end=' ')
 
-    ChuteDeLetra = input('Escolha uma letra para tentar completar a palavra: ')
+    ChuteDeLetra = input('Escolha uma letra para tentar completar a palavra: ').lower()
     print(f'Você tem mais {ChancesParaAcertar} chances')
 
-    if ChuteDeLetra.lower() not in PalavraParaAdivinhar.lower(): # n pode
-        ChancesParaAcertar -= 1
-    else:
-         LetrasLista.append(ChuteDeLetra.lower())
+    LetrasLista.append(ChuteDeLetra)
 
-    if set(PalavraParaAdivinhar.lower()) == set(LetrasLista):  #perguntar para o prof
-        Ganhou = True
+    Ganhou = True
+    for letra in PalavraParaAdivinhar:
+        LetraEncontrada = False
+        for LetraEscolhida in LetrasLista:
+            if LetraEscolhida.lower() == letra.lower():
+                LetraEncontrada = True
+                break
+        if not LetraEncontrada:
+            Ganhou = False
+            break
+
+    if Ganhou:
         break
 
     if ChancesParaAcertar == 0:
         break
 
+    if ChuteDeLetra not in PalavraParaAdivinhar.lower():
+        ChancesParaAcertar -= 1
+
 if Ganhou:
-    print(f'Parabéns, você ganhou o jogo! A palavra era "{PalavraParaAdivinhar}".') 
+    print(f'Parabéns, você ganhou o jogo! A palavra era "{PalavraParaAdivinhar}".')
 else:
     print(f'Você perdeu o jogo! A palavra era "{PalavraParaAdivinhar}".')
