@@ -15,11 +15,12 @@ while True:
             print('_', end=' ')
 
     ChuteDeLetra = input('Escolha uma letra para tentar completar a palavra: ')
-    LetrasLista.append(ChuteDeLetra.lower())
     print(f'Você tem mais {ChancesParaAcertar} chances')
 
-    if ChuteDeLetra.lower() not in PalavraParaAdivinhar.lower():
-        ChancesParaAcertar -= 1 
+    if ChuteDeLetra.lower() not in PalavraParaAdivinhar.lower(): # n pode
+        ChancesParaAcertar -= 1
+    else:
+         LetrasLista.append(ChuteDeLetra.lower())
 
     if set(PalavraParaAdivinhar.lower()) == set(LetrasLista):  #perguntar para o prof
         Ganhou = True
