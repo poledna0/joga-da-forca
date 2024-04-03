@@ -9,30 +9,29 @@ Ganhou = False
 
 while True:
     for Letra in PalavraParaAdivinhar:
-        LetraEncontrada = False
+        LetraAdivinhada = False
         for LetraEscolhida in LetrasLista:
             if LetraEscolhida.lower() == Letra.lower():
-                LetraEncontrada = True
+                LetraAdivinhada = True
                 break
 
-        if LetraEncontrada:
+        if LetraAdivinhada:
             print(Letra, end=' ')
         else:
             print('_', end=' ')
 
     ChuteDeLetra = input('Escolha uma letra para tentar completar a palavra: ').lower()
-    print(f'Você tem mais {ChancesParaAcertar} chances')
-
+    
     LetrasLista.append(ChuteDeLetra)
-
     Ganhou = True
+
     for letra in PalavraParaAdivinhar:
-        LetraEncontrada = False
+        LetraAdivinhada = False
         for LetraEscolhida in LetrasLista:
             if LetraEscolhida.lower() == letra.lower():
-                LetraEncontrada = True
+                LetraAdivinhada = True
                 break
-        if not LetraEncontrada:
+        if not LetraAdivinhada:
             Ganhou = False
             break
 
@@ -44,6 +43,7 @@ while True:
 
     if ChuteDeLetra not in PalavraParaAdivinhar.lower():
         ChancesParaAcertar -= 1
+        print(f'Você tem mais {ChancesParaAcertar} chances')
 
 if Ganhou:
     print(f'Parabéns, você ganhou o jogo! A palavra era "{PalavraParaAdivinhar}".')
