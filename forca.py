@@ -1,35 +1,59 @@
-PalavraParaAdivinhar = input('Digite a palavra para ser adivinhada: ')
-ChancesParaAcertar = int(input('Digite a quantidade de vezes que pode errar: '))
-
-# para limpar o teminal
-print('\033c', end='') 
-
-LetrasLista = []
+PalavraParaSerAdivinhada = input('Digite a palavra: ')
+NumeroDeTentativas = int(input('Digite o número máximo de tentativas: '))
+FraseNaLista = []
 Ganhou = False
+print('\033c', end='')
 
 while True:
-    for Letras in PalavraParaAdivinhar:
-        if Letras in LetrasLista:
+
+    if PalavraParaSerAdivinhada in FraseNaLista:
+                print("A string", PalavraParaSerAdivinhada, "está presente na lista.")
+                break
+    
+    for Letras in PalavraParaSerAdivinhada:
+        encontrado = False
+
+        for letra in FraseNaLista:
+            if Letras.lower() == letra:
+                encontrado = True
+                break
+
+        if encontrado:
             print(Letras.lower(), end=' ')
+            
         else:
             print('_', end=' ')
+    
+    ChuteDaLetra = input('Digite um caractere: ')
+    
+    for Letra in PalavraParaSerAdivinhada:
+        if Letra == ChuteDaLetra:
+            FraseNaLista.append(ChuteDaLetra)
 
-    ChuteDeLetra = input('Escolha uma letra para tentar completar a palavra: ')
-    print(f'Você tem mais {ChancesParaAcertar} chances')
+    if Letra != ChuteDaLetra:
+            NumeroDeTentativas -= 1
+    print(NumeroDeTentativas)
+    print(FraseNaLista)
 
-    if ChuteDeLetra.lower() not in PalavraParaAdivinhar.lower(): # n pode
-        ChancesParaAcertar -= 1
-    else:
-         LetrasLista.append(ChuteDeLetra.lower())
+    if NumeroDeTentativas == 0:
+        print(f' você perdeu a palavra era {PalavraParaSerAdivinhada}')
+        break
+    if FraseNaLista == PalavraParaSerAdivinhada:
+         print('Voce advinhou a palavra parabens')
+         
+    PalavraCompleta = True
 
-    if set(PalavraParaAdivinhar.lower()) == set(LetrasLista):  #perguntar para o prof
+    for LetraPalavra in PalavraParaSerAdivinhada.lower():
+        LetraPresente = False
+        for LetraAdivinhada in FraseNaLista:
+            if LetraPalavra == LetraAdivinhada:
+                LetraPresente = True
+                break
+        if LetraPresente == False:  
+            PalavraCompleta = False
+            break
+
+    if PalavraCompleta == True:  
+        print('Parabéns, você adivinhou a palavra!')
         Ganhou = True
         break
-
-    if ChancesParaAcertar == 0:
-        break
-
-if Ganhou:
-    print(f'Parabéns, você ganhou o jogo! A palavra era "{PalavraParaAdivinhar}".') 
-else:
-    print(f'Você perdeu o jogo! A palavra era "{PalavraParaAdivinhar}".')
