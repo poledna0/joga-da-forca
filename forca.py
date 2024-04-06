@@ -23,7 +23,7 @@ while True:
             
         else:
             print('_', end=' ')
-    
+    print(f'\nVocê tem {NumeroDeTentativas} tentativas')
     ChuteDaLetra = input('Digite um caractere: ')
     
     for Letra in PalavraParaSerAdivinhada:
@@ -32,8 +32,7 @@ while True:
 
     if Letra != ChuteDaLetra:
             NumeroDeTentativas -= 1
-    print(NumeroDeTentativas)
-    print(FraseNaLista)
+            
 
     if NumeroDeTentativas == 0:
         print(f' você perdeu a palavra era {PalavraParaSerAdivinhada}')
