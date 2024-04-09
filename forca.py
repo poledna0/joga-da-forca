@@ -26,7 +26,7 @@ while True:
             print('_', end=' ')
 
     print(f'\nVocê tem {NumeroDeTentativas} tentativas')
-    ChuteDaLetra = input('Digite o número máximo de tentativas:  ')
+    ChuteDaLetra = input('Digite um caractere ou uma string:')
     
     for Letra in PalavraParaSerAdivinhada:
         if Letra == ChuteDaLetra:
