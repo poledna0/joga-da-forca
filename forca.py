@@ -33,26 +33,23 @@ while True:
     if Letra != ChuteDaLetra:
             NumeroDeTentativas -= 1
             
-
     if NumeroDeTentativas == 0:
-        print(f' você perdeu a palavra era {PalavraParaSerAdivinhada}')
+        print(f' Que pena. A palavra era {PalavraParaSerAdivinhada}')
         break
-    if FraseNaLista == PalavraParaSerAdivinhada:
-         print('Voce advinhou a palavra parabens')
          
-    PalavraCompleta = True
+    PalavraCerta = True
 
     for LetraPalavra in PalavraParaSerAdivinhada.lower():
-        LetraPresente = False
+        LetraAchada = False
         for LetraAdivinhada in FraseNaLista:
             if LetraPalavra == LetraAdivinhada:
-                LetraPresente = True
+                LetraAchada = True
                 break
-        if LetraPresente == False:  
-            PalavraCompleta = False
+        if LetraAchada == False:  
+            PalavraCerta = False
             break
 
-    if PalavraCompleta == True:  
-        print('Parabéns, você adivinhou a palavra!')
+    if PalavraCerta == True:  
+        print(f'Parabéns, você ganhou em {NumeroDeTentativas} tentativas')
         Ganhou = True
         break
