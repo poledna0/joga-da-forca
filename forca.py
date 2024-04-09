@@ -3,6 +3,7 @@ NumeroDeTentativas = int(input('Digite o número máximo de tentativas: '))
 FraseNaLista = []
 Ganhou = False
 print('\033c', end='')
+TenatavivasUsadas = 0 
 
 while True:
 
@@ -23,15 +24,18 @@ while True:
             
         else:
             print('_', end=' ')
+
     print(f'\nVocê tem {NumeroDeTentativas} tentativas')
-    ChuteDaLetra = input('Digite um caractere: ')
+    ChuteDaLetra = input('Digite o número máximo de tentativas:  ')
     
     for Letra in PalavraParaSerAdivinhada:
         if Letra == ChuteDaLetra:
             FraseNaLista.append(ChuteDaLetra)
 
-    if Letra != ChuteDaLetra:
-            NumeroDeTentativas -= 1
+    # if Letra != ChuteDaLetra:
+    NumeroDeTentativas -= 1
+    TenatavivasUsadas += 1
+            
             
     if NumeroDeTentativas == 0:
         print(f' Que pena. A palavra era {PalavraParaSerAdivinhada}')
@@ -50,6 +54,6 @@ while True:
             break
 
     if PalavraCerta == True:  
-        print(f'Parabéns, você ganhou em {NumeroDeTentativas} tentativas')
+        print(f'Parabéns, você ganhou em {TenatavivasUsadas} tentativas')
         Ganhou = True
         break
