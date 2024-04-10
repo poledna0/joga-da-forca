@@ -6,6 +6,7 @@ print('\033c', end='')
 TenatavivasUsadas = 0 
 
 while True:
+
     for Letras in PalavraParaSerAdivinhada:
         encontrado = False
 
@@ -22,18 +23,16 @@ while True:
 
     print(f'\nVocê tem {NumeroDeTentativas} tentativas')
     ChuteDaLetra = input('Digite um caractere ou uma string:')
-    
+    letraencontrada = False
     for Letra in PalavraParaSerAdivinhada:
         if Letra == ChuteDaLetra:
             FraseNaLista.append(ChuteDaLetra)
-
-    NumeroDeTentativas -= 1
-    TenatavivasUsadas += 1
+            letraencontrada =True
+     
+    if letraencontrada == False:
+         NumeroDeTentativas -=1
+         TenatavivasUsadas +=1
             
-    if NumeroDeTentativas == 0:
-        print(f' Que pena. A palavra era {PalavraParaSerAdivinhada}')
-        break
-         
     PalavraCerta = True
 
     for LetraPalavra in PalavraParaSerAdivinhada.lower():
@@ -49,4 +48,7 @@ while True:
     if PalavraCerta == True:  
         print(f'Parabéns, você ganhou em {TenatavivasUsadas} tentativas')
         Ganhou = True
+        break         
+    if NumeroDeTentativas == 0:
+        print(f' Que pena. A palavra era {PalavraParaSerAdivinhada}')
         break
