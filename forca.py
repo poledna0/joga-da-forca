@@ -6,11 +6,6 @@ print('\033c', end='')
 TenatavivasUsadas = 0 
 
 while True:
-
-    if PalavraParaSerAdivinhada in FraseNaLista:
-                print("A string", PalavraParaSerAdivinhada, "está presente na lista.")
-                break
-    
     for Letras in PalavraParaSerAdivinhada:
         encontrado = False
 
@@ -32,10 +27,8 @@ while True:
         if Letra == ChuteDaLetra:
             FraseNaLista.append(ChuteDaLetra)
 
-    # if Letra != ChuteDaLetra:
     NumeroDeTentativas -= 1
     TenatavivasUsadas += 1
-            
             
     if NumeroDeTentativas == 0:
         print(f' Que pena. A palavra era {PalavraParaSerAdivinhada}')
