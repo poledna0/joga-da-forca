@@ -1,3 +1,4 @@
+# Henrique Poledna , Eduardo Machado de Oliveira , Arthur Ascione de Carvalho , Arthur Gabriel Goes e Pedro Lucas Gomes Vitorino
 PalavraParaSerAdivinhada = input('Digite a palavra: ')
 NumeroDeTentativas = int(input('Digite o número máximo de tentativas: '))
 FraseNaLista = []
